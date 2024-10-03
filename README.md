@@ -146,5 +146,4 @@ For any questions or issues, please open an issue on the repository.
 - **Example**: Provides a full example for practical understanding.
 - **License and Contributing**: Basic information about contributions and the library's license.
 
-Feel free to modify any sections to better fit your project's specifics or to add more detailed explanations as necessary!
 
