@@ -1,0 +1,16 @@
+PCF8574    KEYWORD1
+PCF8574Config    KEYWORD2
+WriteAll    KEYWORD2
+ReadAll    KEYWORD2
+ToggleAll    KEYWORD2
+SetAllPinMode    KEYWORD2
+ReverseByte    KEYWORD2
+ReverseAllBit    KEYWORD2
+ShiftRight    KEYWORD2
+ShiftLeft    KEYWORD2
+IsPinHigh    KEYWORD2
+IsPinLow    KEYWORD2
+pinMode    KEYWORD2
+digitalWrite    KEYWORD2
+digitalRead    KEYWORD2
+digitalToggle    KEYWORD2
