@@ -1,7 +1,7 @@
-# PCF8574
+# PCF8574_LH
 Arduino library for PCF8574 - 8 channel I2C IO expander.
 
-# PCF8574 Library for Arduino
+# PCF8574_LH Library for Arduino
 
 The `PCF8574` library provides a simple interface for controlling the PCF8574 I/O expander using the I2C communication protocol. It allows you to read and write values to the PCF8574's registers, configure pin modes, and perform bit manipulations.
 
@@ -31,7 +31,7 @@ Initialize the PCF8574
 To use the library, you need to create an instance of the PCF8574 class. You can optionally specify the I2C address and configuration parameters.
 
 ```cpp
-PCF8574 pcf(0x20); // Create an instance with the default address
+PCF8574_LH pcf(0x20); // Create an instance with the default address
 ```
 
 Configuration Structure
@@ -42,7 +42,7 @@ You can customize the I2C settings by creating a PCF8574Config structure:
 PCF8574Config customConfig;
 
 // Declare the PCF8574 instance globally without initialization
-PCF8574 pcf; // Declaration only
+PCF8574_LH pcf; // Declaration only
 
 void setup() {
     ...
@@ -53,7 +53,7 @@ void setup() {
     customConfig.clockSpeed = 400000; // Set I2C clock speed to 400kHz (optional)
 
     // Initialize the PCF8574 instance with custom configuration
-    pcf = PCF8574(0x20, customConfig); // Initialize with customConfig
+    pcf = PCF8574_LH(0x20, customConfig); // Initialize with customConfig
 
     ...
 ```
