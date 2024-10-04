@@ -2,24 +2,27 @@
 #include "PCF8574.h"
 
 // Pin definitions
-const int SDA_PIN = 21;  // Custom SDA pin for ESP32 
-const int SCL_PIN = 22;  // Custom SCL pin for ESP32 
-const uint32_t CLOCK_SPEED = 400000;  // 400kHz I2C speed (più veloce del valore predefinito di 100kHz)
+const int SDA_PIN = 0;  // Custom SDA pin for ESP32 
+const int SCL_PIN = 2;  // Custom SCL pin for ESP32 
+const uint32_t CLOCK_SPEED = 100000;  // 400kHz I2C speed
 
 // Create a PCF8574Config structure with custom settings
 PCF8574Config customConfig;
+
+// Declare the PCF8574 instance globally without initialization
+PCF8574 pcf; // Declaration only
 
 void setup() {
     Serial.begin(9600);
     while (!Serial);
 
     // Set custom I2C configuration
-    customConfig.sdaPin = SDA_PIN;      // Assign custom SDA pin
-    customConfig.sclPin = SCL_PIN;      // Assign custom SCL pin
-    customConfig.clockSpeed = CLOCK_SPEED; // Set custom I2C clock speed
+    customConfig.sdaPin = SDA_PIN;     
+    customConfig.sclPin = SCL_PIN;      
+    customConfig.clockSpeed = CLOCK_SPEED;
 
-    // Create a PCF8574 instance with the custom configuration
-    PCF8574 pcf(0x20, customConfig); // I2C address 0x20 and custom configuration
+    // Initialize the PCF8574 instance with custom configuration
+    pcf = PCF8574(0x20, customConfig); // Initialize with customConfig
 
     // Check if PCF8574 is available
     if (pcf.available()) {
