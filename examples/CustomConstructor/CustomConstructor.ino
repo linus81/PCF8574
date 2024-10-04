@@ -2,8 +2,8 @@
 #include "PCF8574.h"
 
 // Pin definitions
-const int SDA_PIN = 0;  // Custom SDA pin for ESP32 
-const int SCL_PIN = 2;  // Custom SCL pin for ESP32 
+const int SDA_PIN = 21;  // Custom SDA pin for ESP32 
+const int SCL_PIN = 22;  // Custom SCL pin for ESP32 
 const uint32_t CLOCK_SPEED = 100000;  // 400kHz I2C speed
 
 // Create a PCF8574Config structure with custom settings
