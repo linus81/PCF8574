@@ -1,7 +1,7 @@
 #include <Wire.h>
 #include "PCF8574_LH.h"
 
-PCF8574 pcf;
+PCF8574_LH pcf;
 
 void setup() {
     Serial.begin(9600);
