@@ -25,7 +25,7 @@ The `PCF8574` library provides a simple interface for controlling the PCF8574 I/
 ### Include the Library
 
 ```cpp
-#include <PCF8574.h>
+#include <PCF8574_LH.h>
 ```
 Initialize the PCF8574
 To use the library, you need to create an instance of the PCF8574 class. You can optionally specify the I2C address and configuration parameters.
