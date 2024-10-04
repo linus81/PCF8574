@@ -24,7 +24,7 @@
 
 #include "PCF8574_LH.h"
 
-bool PCF8574::available() {
+bool PCF8574_LH::available() {
     // Attempt to initiate a transmission to the PCF8574 address
     wire->beginTransmission(address);
     int result = wire->endTransmission(); // End the transmission
@@ -34,13 +34,13 @@ bool PCF8574::available() {
 }
 
 // Utility function to verify the validity of the pin
-bool isValidPin(uint8_t pin) {
+bool PCF8574_LH::isValidPin(uint8_t pin) {
     return (pin >= 0 && pin <= 7); // Validates that the pin number is between 0 and 7
 }
 
 // Write to the register (8 bits)
 // Returns 0 for success, 1 for transmission error, 2 for address error
-uint8_t PCF8574::WriteAll(uint8_t value) {
+uint8_t PCF8574_LH::WriteAll(uint8_t value) {
     wire->beginTransmission(address);
     wire->write(value);
     int result = wire->endTransmission();
@@ -49,7 +49,7 @@ uint8_t PCF8574::WriteAll(uint8_t value) {
 }
 
 // Read from the register (8 bits)
-uint8_t PCF8574::ReadAll() {
+uint8_t PCF8574_LH::ReadAll() {
     int result = wire->requestFrom(address, (uint8_t) 1);
     // if (result == 0) return 0xFF;  // Error, return 0xFF
     if (result == 0 || wire->available() == 0) {
@@ -60,18 +60,18 @@ uint8_t PCF8574::ReadAll() {
 }
 
 // Return the current value of the register
-uint8_t PCF8574::getReg() {
+uint8_t PCF8574_LH::getReg() {
     return reg; // Return the stored register value
 }
 
 // Invert all bits in the register
-void PCF8574::ToggleAll() {
+void PCF8574_LH::ToggleAll() {
     reg = ~reg; // Bitwise NOT operation to invert all bits
     WriteAll(reg); // Write the inverted value to the register
 }
 
 // Set the same mode (INPUT/OUTPUT) for all pins
-void PCF8574::SetAllPinMode(uint8_t mode) {
+void PCF8574_LH::SetAllPinMode(uint8_t mode) {
     if (mode == OUTPUT) {
         reg = 0x00; // Set all pins to OUTPUT
     } else {
@@ -81,7 +81,7 @@ void PCF8574::SetAllPinMode(uint8_t mode) {
 }
 
 // Reverse the bits of a single byte
-uint8_t PCF8574::ReverseByte(uint8_t byte) {
+uint8_t PCF8574_LH::ReverseByte(uint8_t byte) {
     byte = ((byte & 0xF0) >> 4) | ((byte & 0x0F) << 4);
     byte = ((byte & 0xCC) >> 2) | ((byte & 0x33) << 2);
     byte = ((byte & 0xAA) >> 1) | ((byte & 0x55) << 1);
@@ -89,14 +89,14 @@ uint8_t PCF8574::ReverseByte(uint8_t byte) {
 }
 
 // Reverse all bits in the current register
-void PCF8574::ReverseAllBit() {
+void PCF8574_LH::ReverseAllBit() {
     reg = ReverseByte(reg); // Reverse the current register value
     WriteAll(reg); // Write the updated value to the register
 }
 
 // Shift the register right by 'positions' bits
 // and return the new value of the register
-uint8_t PCF8574::ShiftRight(uint8_t positions) {
+uint8_t PCF8574_LH::ShiftRight(uint8_t positions) {
     // Check if the number of positions to shift is valid
     if (positions > 0 && positions < 8) {
         reg >>= positions; // Perform right shift
@@ -109,7 +109,7 @@ uint8_t PCF8574::ShiftRight(uint8_t positions) {
 
 // Shift the register left by 'positions' bits
 // and return the new value of the register
-uint8_t PCF8574::ShiftLeft(uint8_t positions) {
+uint8_t PCF8574_LH::ShiftLeft(uint8_t positions) {
     // Check if the number of positions to shift is valid
     if (positions > 0 && positions < 8) {
         reg <<= positions; // Perform left shift
@@ -121,7 +121,7 @@ uint8_t PCF8574::ShiftLeft(uint8_t positions) {
 }
 
 // Check if a specific pin is high
-bool PCF8574::IsPinHigh(uint8_t pin) {
+bool PCF8574_LH::IsPinHigh(uint8_t pin) {
     if (pin < 8) {
         return (reg & (1 << pin)) != 0; // Return true if the pin is high
     }
@@ -129,7 +129,7 @@ bool PCF8574::IsPinHigh(uint8_t pin) {
 }
 
 // Check if a specific pin is low
-bool PCF8574::IsPinLow(uint8_t pin) {
+bool PCF8574_LH::IsPinLow(uint8_t pin) {
     if (pin < 8) {
         return (reg & (1 << pin)) == 0; // Return true if the pin is low
     }
@@ -137,7 +137,7 @@ bool PCF8574::IsPinLow(uint8_t pin) {
 }
 
 // Set the mode of a specific pin
-void pinMode(PCF8574& pcf, uint8_t pin, uint8_t mode) {
+void pinMode(PCF8574_LH& pcf, uint8_t pin, uint8_t mode) {
     // Check if the pin is valid
     if (!pcf.isValidPin(pin)) {
         Serial.println("Error: Invalid pin.");
@@ -158,7 +158,7 @@ void pinMode(PCF8574& pcf, uint8_t pin, uint8_t mode) {
 }
 
 // Set the digital value of a specific pin
-void digitalWrite(PCF8574& pcf, uint8_t pin, bool value) {
+void digitalWrite(PCF8574_LH& pcf, uint8_t pin, bool value) {
     // Check if the pin is valid
     if (!pcf.isValidPin(pin)) {
         Serial.println("Error: Invalid pin.");
@@ -179,7 +179,7 @@ void digitalWrite(PCF8574& pcf, uint8_t pin, bool value) {
 }
 
 // Read the digital value of a specific pin
-bool digitalRead(PCF8574& pcf, uint8_t pin) {
+bool digitalRead(PCF8574_LH& pcf, uint8_t pin) {
     // Check if the pin is valid
     if (!pcf.isValidPin(pin)) {
         Serial.println("Error: Invalid pin.");
@@ -192,7 +192,7 @@ bool digitalRead(PCF8574& pcf, uint8_t pin) {
 }
 
 // Toggle the digital value of a specific pin
-void digitalToggle(PCF8574& pcf, uint8_t pin) {
+void digitalToggle(PCF8574_LH& pcf, uint8_t pin) {
     // Check if the pin is valid
     if (!pcf.isValidPin(pin)) {
         Serial.println("Error: Invalid pin.");
