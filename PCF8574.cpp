@@ -33,6 +33,11 @@ bool PCF8574::available() {
     return (result == 0);
 }
 
+// Utility function to verify the validity of the pin
+bool isValidPin(uint8_t pin) {
+    return (pin >= 0 && pin <= 7); // Validates that the pin number is between 0 and 7
+}
+
 // Write to the register (8 bits)
 // Returns 0 for success, 1 for transmission error, 2 for address error
 uint8_t PCF8574::WriteAll(uint8_t value) {
