@@ -3,7 +3,7 @@ Arduino library for PCF8574 - 8 channel I2C IO expander.
 
 # PCF8574_LH Library for Arduino
 
-The `PCF8574` library provides a simple interface for controlling the PCF8574 I/O expander using the I2C communication protocol. It allows you to read and write values to the PCF8574's registers, configure pin modes, and perform bit manipulations.
+The `PCF8574_LH` library provides a simple interface for controlling the PCF8574 I/O expander using the I2C communication protocol. It allows you to read and write values to the PCF8574's registers, configure pin modes, and perform bit manipulations.
 
 ## Features
 
