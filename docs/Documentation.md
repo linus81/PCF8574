@@ -21,6 +21,30 @@ PCF8574 pcf; // Initializes with the default address 0x20
 PCF8574 pcf(0x21); // Initializes with address 0x21
 ```
 
+Configuration Structure
+You can customize the I2C settings by creating a PCF8574Config structure:
+
+```cpp
+// Create a PCF8574Config structure with custom settings
+PCF8574Config customConfig;
+
+// Declare the PCF8574 instance globally without initialization
+PCF8574 pcf; // Declaration only
+
+void setup() {
+    ...
+
+    // Set custom I2C configuration
+    customConfig.sdaPin = 21;   // Set SDA pin (optional)  
+    customConfig.sclPin = 22;   // Set SCL pin (optional)   
+    customConfig.clockSpeed = 400000; // Set I2C clock speed to 400kHz (optional)
+
+    // Initialize the PCF8574 instance with custom configuration
+    pcf = PCF8574(0x20, customConfig); // Initialize with customConfig
+
+    ...
+```
+
 
 ## bool available()
 Checks if the PCF8574 device is available for communication.
@@ -91,7 +115,7 @@ Sets the mode (INPUT or OUTPUT) for all pins.
 #### Parameters:
 
 - mode: Use INPUT or OUTPUT to set the mode.
-- 
+  
 Example:
 
 ```cpp
