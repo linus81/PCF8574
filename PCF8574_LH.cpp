@@ -1,5 +1,5 @@
 /*
-    pcf8574.cpp
+    PCF8574_LH.cpp
     Version 1.0.0
     Created 03.10.2024
     Author: Linus81 aka Giuseppe Musciacchio (github.com/linus81)
@@ -22,7 +22,7 @@
     License along with the GNU C Library; if not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "PCF8574.h"
+#include "PCF8574_LH.h"
 
 bool PCF8574::available() {
     // Attempt to initiate a transmission to the PCF8574 address
