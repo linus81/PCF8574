@@ -1,5 +1,5 @@
 /*
-    pcf8574.h
+    PCF8574_LH.h
     Version 1.0.0
     Created 03.10.2024
     Author: Linus81 aka Giuseppe Musciacchio (github.com/linus81)
@@ -22,8 +22,8 @@
     License along with the GNU C Library; if not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef PCF8574_H
-#define PCF8574_H
+#ifndef PCF8574_LH_H
+#define PCF8574_LH_H
 
 #include <Arduino.h>
 #include <Wire.h>
