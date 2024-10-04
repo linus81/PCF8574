@@ -128,8 +128,12 @@ void loop() {
 }
 ```
 
-License
-This library is released under the MIT License.
+## License
+
+This library is released under the GNU Lesser General Public License (LGPL) version 2.1 or any later version.
+
+You can redistribute it and/or modify it under the terms of the LGPL as published by the Free Software Foundation. For more details, see the LICENSE file included in this repository, or visit [http://www.gnu.org/licenses/lgpl-2.1.html](http://www.gnu.org/licenses/lgpl-2.1.html).
+
 
 Contributing
 Contributions are welcome! Please open an issue or submit a pull request for any improvements, bug fixes, or new features.
