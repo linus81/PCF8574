@@ -10,7 +10,7 @@ const uint32_t CLOCK_SPEED = 100000;  // 400kHz I2C speed
 PCF8574Config customConfig;
 
 // Declare the PCF8574 instance globally without initialization
-PCF8574 pcf; // Declaration only
+PCF8574_LH pcf; // Declaration only
 
 void setup() {
     Serial.begin(9600);
@@ -22,7 +22,7 @@ void setup() {
     customConfig.clockSpeed = CLOCK_SPEED;
 
     // Initialize the PCF8574 instance with custom configuration
-    pcf = PCF8574(0x20, customConfig); // Initialize with customConfig
+    pcf = PCF8574_LH(0x20, customConfig); // Initialize with customConfig
 
     // Check if PCF8574 is available
     if (pcf.available()) {
