@@ -58,8 +58,9 @@ void setup() {
     ...
 ```
 
-Basic Functions
-Check Availability
+### Basic Functions
+
+#### Check Availability
 
 ```cpp
 if (pcf.available()) {
@@ -69,7 +70,7 @@ if (pcf.available()) {
 }
 ```
 
-Write to the Register
+#### Write to the Register
 
 ```cpp
 uint8_t result = pcf.WriteAll(0xFF); // Write 255 to the register
@@ -80,7 +81,7 @@ if (result == 0) {
 }
 ```
 
-Read from the Register
+#### Read from the Register
 
 ```cpp
 uint8_t value = pcf.ReadAll(); // Read the current value of the register
@@ -88,34 +89,34 @@ Serial.print("Current register value: ");
 Serial.println(value, BIN); // Print value in binary format
 ```
 
-Set Pin Mode
+#### Set Pin Mode
 
 ```cpp
 pinMode(pcf, 0, OUTPUT); // Set pin 0 as OUTPUT
 pinMode(pcf, 1, INPUT);  // Set pin 1 as INPUT
 ```
 
-Digital Write and Read
+#### Digital Write and Read
 
 ```cpp
 digitalWrite(pcf, 0, HIGH); // Set pin 0 HIGH
 bool pinState = digitalRead(pcf, 1); // Read the state of pin 1
 ```
 
-Toggle Pin State
+#### Toggle Pin State
 
 ```cpp
 pcf.ToggleAll(); // Invert the state of all pins
 ```
 
-Shift Bits
+#### Shift Bits
 
 ```cpp
 pcf.ShiftRight(1); // Shift the register right by 1 bit
 pcf.ShiftLeft(2);  // Shift the register left by 2 bits
 ```
 
-Example
+## Example
 Here’s a simple example demonstrating the basic usage of the PCF8574 library:
 
 ```cpp
