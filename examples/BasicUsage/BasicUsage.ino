@@ -2,7 +2,7 @@
 #include "PCF8574_LH.h"
 
 // PCF8574 I2C address (default: 0x20)
-PCF8574 pcf;
+PCF8574_LH pcf;
 
 void setup() {
     Serial.begin(9600);
