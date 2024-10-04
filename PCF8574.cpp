@@ -139,16 +139,17 @@ void pinMode(PCF8574& pcf, uint8_t pin, uint8_t mode) {
         return; // Handle the error
     }
 
-    // Update the register based on the pin and mode
+    // Update the register using getReg() method
+    uint8_t reg = pcf.getReg();
     uint8_t mask = (1 << pin);
-    if (mode == INPUT)  {
-        pcf.reg |= mask; // Set the pin's bit to 1 for INPUT
+    if (mode == INPUT) {
+        reg |= mask; // Set the pin's bit to 1 for INPUT
     } else {
-        pcf.reg &= ~mask; // Set the pin's bit to 0 for OUTPUT
+        reg &= ~mask; // Set the pin's bit to 0 for OUTPUT
     }
 
     // Write the updated register value
-    pcf.WriteAll(pcf.reg);
+    pcf.WriteAll(reg);
 }
 
 // Set the digital value of a specific pin
@@ -159,16 +160,17 @@ void digitalWrite(PCF8574& pcf, uint8_t pin, bool value) {
         return; // Handle the error
     }
 
-    // Update the register based on the pin and value
+    // Update the register using getReg() method
+    uint8_t reg = pcf.getReg();
     uint8_t mask = (1 << pin);
     if (value) {
-        pcf.reg &= ~mask; // Set the pin's bit to 0 for HIGH
+        reg &= ~mask; // Set the pin's bit to 0 for HIGH
     } else {
-        pcf.reg |= mask; // Set the pin's bit to 1 for LOW
+        reg |= mask; // Set the pin's bit to 1 for LOW
     }
 
     // Write the updated register value
-    pcf.WriteAll(pcf.reg);
+    pcf.WriteAll(reg);
 }
 
 // Read the digital value of a specific pin
@@ -184,7 +186,6 @@ bool digitalRead(PCF8574& pcf, uint8_t pin) {
     return !(currentState & (1 << pin)); // Return LOW if the bit is 0, HIGH if it is 1
 }
 
-
 // Toggle the digital value of a specific pin
 void digitalToggle(PCF8574& pcf, uint8_t pin) {
     // Check if the pin is valid
@@ -193,9 +194,11 @@ void digitalToggle(PCF8574& pcf, uint8_t pin) {
         return; // Handle the error
     }
 
+    // Toggle the pin's bit using getReg() method
+    uint8_t reg = pcf.getReg();
     uint8_t mask = (1 << pin);
-    pcf.reg ^= mask; // Toggle the pin's bit
+    reg ^= mask; // Toggle the pin's bit
 
     // Write the updated register value
-    pcf.WriteAll(pcf.reg);
+    pcf.WriteAll(reg);
 }
