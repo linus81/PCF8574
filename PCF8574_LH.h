@@ -50,7 +50,7 @@ class PCF8574_LH {
         static const uint8_t DEFAULT_ADDRESS = 0x20; // Default I2C address for the PCF8574
 
         // Constructor with address and configuration
-        PCF8574(uint8_t address = DEFAULT_ADDRESS, PCF8574Config config = PCF8574Config()) {
+        PCF8574_LH(uint8_t address = DEFAULT_ADDRESS, PCF8574Config config = PCF8574Config()) {
             this->address = address;             // Assign the specified address
             this->wire = config.wire;            // Assign the selected I2C bus
 
