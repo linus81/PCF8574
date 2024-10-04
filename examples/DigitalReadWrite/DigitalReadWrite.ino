@@ -1,7 +1,7 @@
 #include <Wire.h>
 #include "PCF8574_LH.h"
 
-PCF8574 pcf;
+PCF8574_LH pcf;
 
 // Pin definitions
 const uint8_t BUTTON_PIN = 0;  // Pin 0 on the PCF8574
