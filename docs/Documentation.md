@@ -3,9 +3,9 @@
 ## Overview
 The PCF8574 library allows for easy control of the I2C-based PCF8574 port expander. Below is a detailed description of the available methods.
 
-## Class: PCF8574
+## Class: PCF8574_LH
 
-## PCF8574(uint8_t address = 0x20, PCF8574Config config = PCF8574Config())
+## PCF8574_LH(uint8_t address = 0x20, PCF8574Config config = PCF8574Config())
 Class constructor. Initializes an instance of the PCF8574 expander with the given I2C address and an optional configuration.
 
 #### Parameters:
@@ -17,8 +17,8 @@ Class constructor. Initializes an instance of the PCF8574 expander with the give
 Example:
 
 ```cpp
-PCF8574 pcf; // Initializes with the default address 0x20
-PCF8574 pcf(0x21); // Initializes with address 0x21
+PCF8574_LH pcf; // Initializes with the default address 0x20
+PCF8574_LH pcf(0x21); // Initializes with address 0x21
 ```
 
 Configuration Structure
@@ -29,7 +29,7 @@ You can customize the I2C settings by creating a PCF8574Config structure:
 PCF8574Config customConfig;
 
 // Declare the PCF8574 instance globally without initialization
-PCF8574 pcf; // Declaration only
+PCF8574_LH pcf; // Declaration only
 
 void setup() {
     ...
@@ -40,7 +40,7 @@ void setup() {
     customConfig.clockSpeed = 400000; // Set I2C clock speed to 400kHz (optional)
 
     // Initialize the PCF8574 instance with custom configuration
-    pcf = PCF8574(0x20, customConfig); // Initialize with customConfig
+    pcf = PCF8574_LH(0x20, customConfig); // Initialize with customConfig
 
     ...
 ```
