@@ -39,7 +39,7 @@ struct PCF8574Config {
     PCF8574Config() {}
 };
 
-class PCF8574 {
+class PCF8574_LH {
 
     private:
         uint8_t address;               // I2C address of the PCF8574
@@ -88,10 +88,10 @@ class PCF8574 {
 };
 
 // Declarations of utility functions to operate on pins using uint8_t
-void pinMode(PCF8574&, uint8_t pin, uint8_t mode); // Set the pin mode (INPUT/OUTPUT)
-void digitalWrite(PCF8574&, uint8_t pin, uint8_t value); // Write a digital value to a pin
-bool digitalRead(PCF8574&, uint8_t pin); // Read the digital value from a pin
-void digitalToggle(PCF8574&, uint8_t pin); // Toggle the state of a pin
+void pinMode(PCF8574_LH&, uint8_t pin, uint8_t mode); // Set the pin mode (INPUT/OUTPUT)
+void digitalWrite(PCF8574_LH&, uint8_t pin, uint8_t value); // Write a digital value to a pin
+bool digitalRead(PCF8574_LH&, uint8_t pin); // Read the digital value from a pin
+void digitalToggle(PCF8574_LH&, uint8_t pin); // Toggle the state of a pin
 
 
 #endif /* PCF8574_H */
