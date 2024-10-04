@@ -46,11 +46,6 @@ class PCF8574 {
         uint8_t reg = 0xFF;            // Initial value of the register (0xFF in hexadecimal, equivalent to 255 decimal)
         TwoWire *wire;                 // Pointer to the I2C bus
 
-        // Utility function to verify the validity of the pin
-        bool isValidPin(uint8_t pin) {
-           return (pin >= 0 && pin <= 7); // Validates that the pin number is between 0 and 7
-        }
-
     public:
         static const uint8_t DEFAULT_ADDRESS = 0x20; // Default I2C address for the PCF8574
 
@@ -71,6 +66,7 @@ class PCF8574 {
         }
 
         bool available(); // Check if the PCF8574 is available for communication
+        bool isValidPin(uint8_t pin); // Verify the validity of the pin
 
         // Method to write an 8-bit value to the register
         uint8_t WriteAll(uint8_t value);
